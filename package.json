@@ -1,0 +1,41 @@
+{
+  "name": "inquirer-npm-name",
+  "version": "0.0.0",
+  "description": "Extend inquirer to ensure the value provided to the first prompt does not exist as an npm package",
+  "homepage": "",
+  "repository": "SBoudrias/inquirer-npm-name",
+  "author": {
+    "name": "Simon Boudrias",
+    "email": "admin@simonboudrias.com",
+    "url": "http://simonboudrias.com"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "inquirer",
+    "npm",
+    "name",
+    "yeoman",
+    "package"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-eslint": "^0.15.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^0.4.5",
+    "gulp-coveralls": "^0.1.0"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "npm-name": "^1.1.1"
+  }
+}
