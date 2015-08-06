@@ -1,7 +1,7 @@
 {
   "name": "inquirer-npm-name",
   "version": "0.0.0",
-  "description": "Extend inquirer to ensure the value provided to the first prompt does not exist as an npm package",
+  "description": "Helper function using inquirer to validate a value provided in a prompt does not exist as an npm package.",
   "homepage": "",
   "repository": "SBoudrias/inquirer-npm-name",
   "author": {
