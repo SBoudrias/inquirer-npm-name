@@ -38,6 +38,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "npm-name": "^1.1.1"
+    "npm-name": "^3.0.0"
   }
 }

@@ -17,10 +17,19 @@ $ npm install --save inquirer-npm-name
 var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
+//The legacy approach: Using callback
 askName({
   name: 'name',
   message: 'Module Name'
 }, inquirer, function (name) {
+  console.log(name);
+});
+
+//The latest approach: Using promises
+askName({
+  name: 'name',
+  message: 'Module Name'
+}, inquirer).then(function (name) {
   console.log(name);
 });
 ```
@@ -33,6 +42,8 @@ var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
 module.exports = generators.Base.extend({
+
+  //The legacy approach: Using callback
   prompting: function () {
     var done = this.async();
 
@@ -44,14 +55,26 @@ module.exports = generators.Base.extend({
       done();
     });
   }
+
+  //The latest approach: Using promises
+  prompting: function () {
+
+    return askName({
+      name: 'name',
+      message: 'Module Name'
+    }, this).then(function (name) {
+      console.log(name);
+    });
+  }
 });
 ```
 
-`askName` takes 3 parameters:
+`askName` takes 2 parameters:
 
 1. `prompt` an [Inquirer prompt configuration](https://github.com/SBoudrias/Inquirer.js#question).
 2. `inquirer` or any object with a `obj.prompt()` method.
-3. The `callback` who'll take the selected name as parameter.
+
+**Returns:** A `Promise` object with `then()` chained returned from [Inquirer](https://github.com/SBoudrias/Inquirer.js) prompt.
 
 ## License
 
