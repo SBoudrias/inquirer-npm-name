@@ -17,15 +17,6 @@ $ npm install --save inquirer-npm-name
 var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
-//The legacy approach: Using callback
-askName({
-  name: 'name',
-  message: 'Module Name'
-}, inquirer, function (name) {
-  console.log(name);
-});
-
-//The latest approach: Using promises
 askName({
   name: 'name',
   message: 'Module Name'
@@ -43,20 +34,6 @@ var askName = require('inquirer-npm-name');
 
 module.exports = generators.Base.extend({
 
-  //The legacy approach: Using callback
-  prompting: function () {
-    var done = this.async();
-
-    askName({
-      name: 'name',
-      message: 'Module Name'
-    }, this, function (name) {
-      console.log(name);
-      done();
-    });
-  }
-
-  //The latest approach: Using promises
   prompting: function () {
 
     return askName({
