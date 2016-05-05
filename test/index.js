@@ -4,6 +4,7 @@ var assert = require('assert');
 var sinon = require('sinon');
 var proxyquire = require('proxyquire');
 var askName = require('../lib');
+var Promise = require('pinkie-promise');
 
 describe('inquirer-npm-name', function () {
   beforeEach(function () {
@@ -15,24 +16,26 @@ describe('inquirer-npm-name', function () {
     this.inquirer = {
       prompt: sinon.stub()
     };
+
   });
 
   it('only ask name if name is free', function (done) {
-    this.inquirer.prompt.callsArgWith(1, {name: 'foo'});
 
-    askName(this.conf, this.inquirer, function (val) {
-      assert.equal(val, 'foo');
+    this.inquirer.prompt.returns(Promise.resolve({name:'foo'}));
+
+    return askName(this.conf, this.inquirer).then(function (props) {
+      assert.equal(props.name, 'foo');
       done();
     });
   });
 
   it('recurse if name is taken', function (done) {
     this.inquirer.prompt
-      .onFirstCall().callsArgWith(1, {name: 'foo', askAgain: true})
-      .onSecondCall().callsArgWith(1, {name: 'bar'});
+        .onFirstCall().returns(Promise.resolve({name: 'foo', askAgain: true}))
+        .onSecondCall().returns(Promise.resolve({name: 'bar'}));
 
-    askName(this.conf, this.inquirer, function (val) {
-      assert.equal(val, 'bar');
+    return askName(this.conf, this.inquirer).then(function (props) {
+      assert.equal(props.name, 'bar');
       done();
     });
   });
