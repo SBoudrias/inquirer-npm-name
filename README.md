@@ -20,8 +20,8 @@ var askName = require('inquirer-npm-name');
 askName({
   name: 'name',
   message: 'Module Name'
-}, inquirer).then(function (name) {
-  console.log(name);
+}, inquirer).then(function (answer) {
+  console.log(answer.name);
 });
 ```
 
@@ -33,9 +33,7 @@ var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
 module.exports = generators.Base.extend({
-
   prompting: function () {
-
     return askName({
       name: 'name',
       message: 'Module Name'
@@ -51,7 +49,7 @@ module.exports = generators.Base.extend({
 1. `prompt` an [Inquirer prompt configuration](https://github.com/SBoudrias/Inquirer.js#question).
 2. `inquirer` or any object with a `obj.prompt()` method.
 
-**Returns:** A `Promise` object with `then()` chained returned from [Inquirer](https://github.com/SBoudrias/Inquirer.js) prompt.
+**Returns:** A `Promise` resolved with the answer object.
 
 ## License
 
