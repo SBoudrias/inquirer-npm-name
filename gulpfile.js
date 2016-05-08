@@ -18,12 +18,15 @@ gulp.task('static', function () {
 });
 
 gulp.task('nsp', function (cb) {
-  nsp('package.json', cb);
+  nsp({package: path.resolve('package.json')}, cb);
 });
 
 gulp.task('pre-test', function () {
   return gulp.src('lib/**/*.js')
-    .pipe(istanbul({includeUntested: true}))
+    .pipe(excludeGitignore())
+    .pipe(istanbul({
+      includeUntested: true
+    }))
     .pipe(istanbul.hookRequire());
 });
 
@@ -40,6 +43,10 @@ gulp.task('test', ['pre-test'], function (cb) {
     .on('end', function () {
       cb(mochaErr);
     });
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
 
 gulp.task('coveralls', ['test'], function () {

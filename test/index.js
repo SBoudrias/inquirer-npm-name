@@ -16,12 +16,10 @@ describe('inquirer-npm-name', function () {
     this.inquirer = {
       prompt: sinon.stub()
     };
-
   });
 
   it('only ask name if name is free', function () {
-
-    this.inquirer.prompt.returns(Promise.resolve({ name: 'foo' }));
+    this.inquirer.prompt.returns(Promise.resolve({name: 'foo'}));
 
     return askName(this.conf, this.inquirer).then(function (props) {
       assert.equal(props.name, 'foo');
@@ -30,8 +28,8 @@ describe('inquirer-npm-name', function () {
 
   it('recurse if name is taken', function () {
     this.inquirer.prompt
-        .onFirstCall().returns(Promise.resolve({ name: 'foo', askAgain: true }))
-        .onSecondCall().returns(Promise.resolve({ name: 'bar' }));
+        .onFirstCall().returns(Promise.resolve({name: 'foo', askAgain: true}))
+        .onSecondCall().returns(Promise.resolve({name: 'bar'}));
 
     return askName(this.conf, this.inquirer).then(function (props) {
       assert.equal(props.name, 'bar');
@@ -40,7 +38,6 @@ describe('inquirer-npm-name', function () {
 
   describe('npm validation logic (inquirer `when` function)', function () {
     beforeEach(function () {
-
       this.askName2 = proxyquire('../lib', {
         'npm-name': function (name) {
           if (this.npmNameError instanceof Error) {
@@ -52,36 +49,36 @@ describe('inquirer-npm-name', function () {
     });
 
     it('ask question if npm name is taken', function () {
-      this.inquirer.prompt.returns(Promise.resolve({ name: 'yo' }));
+      this.inquirer.prompt.returns(Promise.resolve({name: 'yo'}));
       this.conf.name = 'yo';
 
       return this.askName2(this.conf, this.inquirer).then(function () {
         this.when = this.inquirer.prompt.getCall(0).args[0][1].when;
-        this.when.call(this, { name: 'yo' }).then(function (shouldAsk) {
+        this.when({name: 'yo'}).then(function (shouldAsk) {
           assert.ok(shouldAsk);
         });
       }.bind(this));
     });
 
     it('does not ask question if npm name is free', function () {
-      this.inquirer.prompt.returns(Promise.resolve({ name: 'foo' }));
+      this.inquirer.prompt.returns(Promise.resolve({name: 'foo'}));
 
       return this.askName2(this.conf, this.inquirer).then(function () {
-         this.when = this.inquirer.prompt.getCall(0).args[0][1].when;
-         this.when.call(this, { name: 'foo' }).then(function (shouldAsk) {
-           assert.ok(shouldAsk);
-         });
-       }.bind(this));
+        this.when = this.inquirer.prompt.getCall(0).args[0][1].when;
+        this.when({name: 'foo'}).then(function (shouldAsk) {
+          assert.ok(shouldAsk);
+        });
+      }.bind(this));
     });
 
     it('does not ask if npm-name fails', function () {
-      this.inquirer.prompt.returns(Promise.resolve({ name: 'foo' }));
+      this.inquirer.prompt.returns(Promise.resolve({name: 'foo'}));
 
       this.npmNameError = new Error('Network Error');
       return this.askName2(this.conf, this.inquirer).then(function () {
         this.when = this.inquirer.prompt.getCall(0).args[0][1].when;
 
-        return this.when.call(this, { name: 'foo' }).catch(function (err) {
+        return this.when({name: 'foo'}).catch(function (err) {
           assert.equal(err.message, 'Network Error');
         });
       }.bind(this));
