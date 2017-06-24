@@ -21,7 +21,7 @@
   ],
   "repository": "SBoudrias/inquirer-npm-name",
   "devDependencies": {
-    "eslint": "^3.10.2",
+    "eslint": "^4.1.0",
     "eslint-config-xo-space": "^0.15.0",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.0",
