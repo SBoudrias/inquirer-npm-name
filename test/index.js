@@ -28,8 +28,8 @@ describe('inquirer-npm-name', function () {
 
   it('recurse if name is taken', function () {
     this.inquirer.prompt
-        .onFirstCall().returns(Promise.resolve({name: 'foo', askAgain: true}))
-        .onSecondCall().returns(Promise.resolve({name: 'bar'}));
+      .onFirstCall().returns(Promise.resolve({name: 'foo', askAgain: true}))
+      .onSecondCall().returns(Promise.resolve({name: 'bar'}));
 
     return askName(this.conf, this.inquirer).then(function (props) {
       assert.equal(props.name, 'bar');
