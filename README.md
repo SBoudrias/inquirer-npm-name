@@ -34,6 +34,11 @@ askName(
 ).then(function(answer) {
   console.log(answer.name);
 });
+
+// Equivalent to {name: 'name'}
+askName('name', inquirer).then(function(answer) {
+  console.log(answer.name);
+});
 ```
 
 Inside a **Yeoman Generator** you'd call it this way:
@@ -60,7 +65,8 @@ module.exports = generators.Base.extend({
 
 `askName` takes 2 parameters:
 
-1. `prompt` an [Inquirer prompt configuration](https://github.com/SBoudrias/Inquirer.js#question).
+1. `prompt` an [Inquirer prompt configuration](https://github.com/SBoudrias/Inquirer.js#question)
+   or just a string to serve as name.
 2. `inquirer` or any object with a `obj.prompt()` method.
 
 **Returns:** A `Promise` resolved with the answer object.
