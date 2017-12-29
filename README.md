@@ -1,8 +1,13 @@
 # inquirer-npm-name [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
-Helper function using [inquirer](https://github.com/SBoudrias/Inquirer.js) to validate a value provided in a prompt does not exist as a npm package.
+Helper function using [inquirer](https://github.com/SBoudrias/Inquirer.js) to
+validate a value provided in a prompt does not exist as a npm package.
 
-If the value is already used as a npm package, then the users will be prompted and asked if they want to choose another one. If so, we'll recurse through the same validation process until we have a name that is unused on the npm registry. This is a helper to catch naming issue in advance, it is not a validation rule as the user can always decide to continue with the same name.
+If the value is already used as a npm package, then the users will be prompted
+and asked if they want to choose another one. If so, we'll recurse through the
+same validation process until we have a name that is unused on the npm registry.
+This is a helper to catch naming issue in advance, it is not a validation rule
+as the user can always decide to continue with the same name.
 
 ## Install
 
@@ -10,17 +15,19 @@ If the value is already used as a npm package, then the users will be prompted a
 $ npm install --save inquirer-npm-name
 ```
 
-
 ## Usage
 
 ```js
 var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
-askName({
-  name: 'name',
-  message: 'Module Name'
-}, inquirer).then(function (answer) {
+askName(
+  {
+    name: 'name',
+    message: 'Some Module Name'
+  },
+  inquirer
+).then(function(answer) {
   console.log(answer.name);
 });
 ```
@@ -33,11 +40,14 @@ var inquirer = require('inquirer');
 var askName = require('inquirer-npm-name');
 
 module.exports = generators.Base.extend({
-  prompting: function () {
-    return askName({
-      name: 'name',
-      message: 'Module Name'
-    }, this).then(function (name) {
+  prompting: function() {
+    return askName(
+      {
+        name: 'name',
+        message: 'Module Name'
+      },
+      this
+    ).then(function(name) {
       console.log(name);
     });
   }
@@ -54,7 +64,6 @@ module.exports = generators.Base.extend({
 ## License
 
 MIT © [Simon Boudrias](http://twitter.com/vaxilart)
-
 
 [npm-image]: https://badge.fury.io/js/inquirer-npm-name.svg
 [npm-url]: https://npmjs.org/package/inquirer-npm-name
