@@ -3,6 +3,10 @@
 Helper function using [inquirer](https://github.com/SBoudrias/Inquirer.js) to
 validate a value provided in a prompt does not exist as a npm package.
 
+The supplied value must be a valid package name (as per
+[validate-npm-package-name]); otherwise, the user will again be prompted to
+enter a name.
+
 If the value is already used as a npm package, then the users will be prompted
 and asked if they want to choose another one. If so, we'll recurse through the
 same validation process until we have a name that is unused on the npm registry.
@@ -24,7 +28,7 @@ var askName = require('inquirer-npm-name');
 askName(
   {
     name: 'name',
-    message: 'Some Module Name'
+    message: 'Some Module Name' // Default: 'Module Name'
   },
   inquirer
 ).then(function(answer) {
@@ -65,6 +69,7 @@ module.exports = generators.Base.extend({
 
 MIT © [Simon Boudrias](http://twitter.com/vaxilart)
 
+[validate-npm-package-name]: https://npmjs.org/package/validate-npm-package-name
 [npm-image]: https://badge.fury.io/js/inquirer-npm-name.svg
 [npm-url]: https://npmjs.org/package/inquirer-npm-name
 [travis-image]: https://travis-ci.org/SBoudrias/inquirer-npm-name.svg?branch=master
