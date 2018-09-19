@@ -44,7 +44,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "npm-name": "^3.0.0",
+    "npm-name": "^5.0.1",
     "upper-case-first": "^1.1.2",
     "validate-npm-package-name": "^3.0.0"
   },
