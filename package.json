@@ -45,7 +45,7 @@
   "license": "MIT",
   "dependencies": {
     "npm-name": "^3.0.0",
-    "upper-case-first": "^1.1.2",
+    "upper-case-first": "^2.0.1",
     "validate-npm-package-name": "^3.0.0"
   },
   "eslintConfig": {
