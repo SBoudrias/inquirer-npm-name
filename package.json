@@ -1,6 +1,6 @@
 {
   "name": "inquirer-npm-name",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Helper function using inquirer to validate a value provided in a prompt does not exist as an npm package.",
   "homepage": "",
   "author": {
