@@ -24,7 +24,6 @@
     "eslint": "^7.21.0",
     "eslint-config-xo-space": "^0.27.0",
     "mocha": "^8.3.0",
-    "pinkie-promise": "^2.0.1",
     "proxyquire": "^2.0.0",
     "sinon": "^9.2.4"
   },
@@ -34,8 +33,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "npm-name": "^5.5.0",
-    "upper-case-first": "^1.1.2",
+    "npm-name": "^6.0.1",
+    "upper-case-first": "^2.0.2",
     "validate-npm-package-name": "^3.0.0"
   },
   "eslintConfig": {

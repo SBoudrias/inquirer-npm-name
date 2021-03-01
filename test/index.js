@@ -4,7 +4,6 @@ var assert = require('assert');
 var sinon = require('sinon');
 var proxyquire = require('proxyquire');
 var askName = require('../lib');
-var Promise = require('pinkie-promise');
 
 describe('inquirer-npm-name', function () {
   beforeEach(function () {
