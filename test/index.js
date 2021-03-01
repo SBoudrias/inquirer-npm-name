@@ -43,6 +43,7 @@ describe('inquirer-npm-name', function () {
           if (this.npmNameError instanceof Error) {
             return Promise.reject(this.npmNameError);
           }
+
           return Promise.resolve(name === 'yo');
         }.bind(this)
       });

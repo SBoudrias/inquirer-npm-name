@@ -21,15 +21,15 @@
   ],
   "repository": "SBoudrias/inquirer-npm-name",
   "devDependencies": {
-    "eslint": "^4.9.0",
-    "eslint-config-xo-space": "^0.18.0",
-    "mocha": "^5.0.0",
+    "eslint": "^7.21.0",
+    "eslint-config-xo-space": "^0.27.0",
+    "mocha": "^8.3.0",
     "pinkie-promise": "^2.0.1",
     "proxyquire": "^2.0.0",
-    "sinon": "^5.0.0"
+    "sinon": "^9.2.4"
   },
   "scripts": {
-    "pretest": "eslint lib/index.js",
+    "pretest": "eslint .",
     "test": "mocha"
   },
   "license": "MIT",
