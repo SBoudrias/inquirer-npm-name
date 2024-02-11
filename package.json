@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "npm-name": "^6.0.1",
+    "npm-name": "^8.0.0",
     "upper-case-first": "^2.0.2",
     "validate-npm-package-name": "^3.0.0"
   },
